@@ -42,6 +42,3 @@ lsp.setup()
 
 lsp.skip_server_setup({ 'rust_analyzer' })
 
-require('rust-tools').setup({
-	require 'dzl71.configs.rust_tools'
-})

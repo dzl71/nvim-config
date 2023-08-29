@@ -31,6 +31,14 @@ return {
 		'tpope/vim-fugitive'
 	},
 	{
+		'simrat39/rust-tools.nvim',
+		config = function()
+			require('rust-tools').setup({
+				require 'dzl71.configs.rust_tools'
+			})
+		end
+	},
+	{
 		'VonHeikemen/lsp-zero.nvim',
 		branch = 'v2.x',
 		dependencies = {
@@ -48,19 +56,9 @@ return {
 		end
 	},
 	{
-		'simrat39/rust-tools.nvim',
-	},
-	{
 		"lukas-reineke/indent-blankline.nvim",
 		config = function()
 			require("dzl71.configs.indentation")
 		end
 	},
-	-- {
-	-- "jose-elias-alvarez/null-ls.nvim",
-	-- config = function()
-	-- require("dzl71.configs.null_ls")
-	-- end,
-	-- requires = { "nvim-lua/plenary.nvim" },
-	-- },
 }
