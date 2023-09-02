@@ -45,6 +45,6 @@ vim.opt.updatetime = 50
 
 vim.opt.colorcolumn = "80"
 
-vim.opt.shell = 'bash' -- sets the terminal to bash
+vim.opt.shell = 'nu' -- sets the terminal to nu
 
 vim.g.SuperTabDisabled = 1
