@@ -31,8 +31,8 @@ vim.keymap.set("n", "<C-l>", '<C-w>l') -- jump to righter window
 vim.keymap.set("n", "<C-h>", '<C-w>h') -- jump to lefter window
 
 -- moving the line of the selected text up and down
-vim.keymap.set("v", "J", ":m '>+4<CR>gv=gv")
-vim.keymap.set("v", "K", ":m '<1<CR>gv=gv")
+vim.keymap.set("v", "J", ":m .+<CR>gv=gv")
+vim.keymap.set("v", "K", ":m .-2<CR>gv=gv")
 
 -- keeps the cursor at the middle of the screen when jumping up and down
 vim.keymap.set("n", "<C-d>", "<C-d>zz")
