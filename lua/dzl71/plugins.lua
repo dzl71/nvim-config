@@ -32,10 +32,11 @@ return {
 	},
 	{
 		'simrat39/rust-tools.nvim',
+		ft = "rust",
 		config = function()
-			require('rust-tools').setup({
+			require('rust-tools').setup(
 				require 'dzl71.configs.rust_tools'
-			})
+			)
 		end
 	},
 	{

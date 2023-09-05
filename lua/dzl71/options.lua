@@ -48,3 +48,4 @@ vim.opt.colorcolumn = "80"
 vim.opt.shell = 'nu' -- sets the terminal to nu
 
 vim.g.SuperTabDisabled = 1
+

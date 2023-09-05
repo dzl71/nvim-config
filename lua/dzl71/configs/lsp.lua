@@ -3,7 +3,7 @@ local lsp = require('lsp-zero')
 lsp.preset("recommended")
 
 lsp.ensure_installed({
-	sumneko_lua,
+	'lua_ls',
 	'rust_analyzer',
 })
 
@@ -21,6 +21,10 @@ lsp.on_attach(function(client, bufnr)
 	-- lsp.default_keymaps({ buffer = bufnr })
 	local opts = { buffer = bufnr } --, remap = false }
 
+	--vim.lsp.buf.formatting({
+	--tabSize = 4,
+	--insertSpaces = false
+	--})
 	vim.keymap.set("n", "gd", function() vim.lsp.buf.definition() end, opts)
 	vim.keymap.set("n", "gr", function() vim.lsp.buf.references() end, opts)
 	vim.keymap.set("n", "K", function() vim.lsp.buf.hover() end, opts)
@@ -29,6 +33,11 @@ lsp.on_attach(function(client, bufnr)
 	vim.keymap.set("n", "dp", function() vim.diagnostic.goto_next() end, opts)
 	vim.keymap.set("n", "<leader>a", function() vim.lsp.buf.code_action() end, opts)
 	vim.keymap.set("n", "<leader>rn", function() vim.lsp.buf.rename() end, opts)
+	vim.keymap.set("n", "<leader>vm", function()
+		for i = 1, 10, 1 do
+			print(i)
+		end
+	end, opts)
 	vim.keymap.set("n", "<leader>fm", function()
 		vim.lsp.buf.format({
 			format_opts = { async = false },
@@ -42,3 +51,4 @@ lsp.setup()
 
 lsp.skip_server_setup({ 'rust_analyzer' })
 
+vim.g.zig_fmt_autosave = 0
