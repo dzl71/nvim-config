@@ -5,6 +5,9 @@ lsp.preset("recommended")
 lsp.ensure_installed({
 	'lua_ls',
 	'rust_analyzer',
+	'zls',
+	'clangd',
+	'jdtls',
 })
 
 local cmp = require('cmp')
