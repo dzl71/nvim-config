@@ -19,7 +19,8 @@ vim.keymap.set('n', '<leader><Tab>', telescope.buffers, {}) -- search buffers
 vim.keymap.set('n', 'gr', '<cmd>Telescope lsp_references<cr>', { buffer = true })
 
 -- undotree
-vim.keymap.set("n", "<leader>u", "<cmd>UndotreeToggle<cr>")
+--vim.keymap.set('n', '<leader>u', require('undotree').toggle, { noremap = true, silent = true })
+vim.keymap.set('n', '<leader>u', '<cmd>UndotreeToggle<cr>', {})
 
 -- vim-fugitive
 vim.keymap.set("n", "<leader>gi", vim.cmd.Git)

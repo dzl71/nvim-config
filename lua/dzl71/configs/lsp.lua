@@ -43,7 +43,9 @@ lsp.on_attach(function(client, bufnr)
 	end, opts)
 	vim.keymap.set("n", "<leader>fm", function()
 		vim.lsp.buf.format({
-			format_opts = { async = false },
+			format_opts = {
+				async = false,
+			},
 		})
 		vim.cmd("w")
 	end, opts)

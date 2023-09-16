@@ -12,7 +12,6 @@ vim.opt.guicursor = "" -- make the cursor fat and full
 vim.opt.nu = true             -- enable line numerations
 vim.opt.relativenumber = true -- enable relative numbers
 
-
 -- makes indenting normal
 vim.opt.tabstop = 4
 vim.opt.softtabstop = 4
@@ -29,8 +28,7 @@ vim.opt.backup = false
 
 vim.opt.undodir = os.getenv("HOME") .. "/.vim/undodir" -- setts the undodir to this directory
 
-
-vim.opt.undofile = true -- eanble undotree backups
+vim.opt.undofile = true                                -- eanble undotree backups
 
 vim.opt.hlsearch = false
 vim.opt.incsearch = true
@@ -46,6 +44,3 @@ vim.opt.updatetime = 50
 vim.opt.colorcolumn = "80"
 
 vim.opt.shell = 'nu' -- sets the terminal to nu
-
-vim.g.SuperTabDisabled = 1
-

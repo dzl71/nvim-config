@@ -1,10 +1,19 @@
 return {
 	{
+		"mbbill/undotree",
+		config = function()
+			require('dzl71.configs.undotree')
+		end
+	},
+	{
 		'nvim-telescope/telescope.nvim',
 		tag = '0.1.2',
 		dependencies = {
 			'nvim-lua/plenary.nvim',
 		},
+		config = function()
+			require("telescope").setup()
+		end
 	},
 	{
 		"rebelot/kanagawa.nvim",
@@ -23,9 +32,6 @@ return {
 	},
 	{
 		'nvim-treesitter/playground'
-	},
-	{
-		'mbbill/undotree'
 	},
 	{
 		'tpope/vim-fugitive'
