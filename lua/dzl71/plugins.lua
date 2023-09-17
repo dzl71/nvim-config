@@ -26,7 +26,7 @@ return {
 		build = ':TSUpdate',
 		config = function()
 			local opts = require("dzl71.configs.treesitter")
-			require('nvim-treesitter.install').compilers = { 'zig' }
+			--require('nvim-treesitter.install').compilers = { 'zig' }
 			require('nvim-treesitter.configs').setup(opts)
 		end
 	},
