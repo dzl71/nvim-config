@@ -24,10 +24,6 @@ lsp.on_attach(function(client, bufnr)
 	-- lsp.default_keymaps({ buffer = bufnr })
 	local opts = { buffer = bufnr } --, remap = false }
 
-	--vim.lsp.buf.formatting({
-	--tabSize = 4,
-	--insertSpaces = false
-	--})
 	vim.keymap.set("n", "gd", function() vim.lsp.buf.definition() end, opts)
 	vim.keymap.set("n", "gr", function() vim.lsp.buf.references() end, opts)
 	vim.keymap.set("n", "K", function() vim.lsp.buf.hover() end, opts)

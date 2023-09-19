@@ -1,21 +1,35 @@
 vim.g.mapleader = ' '
 
+local current_languge = vim.bo.filetype
+local languge_comments = {
+	['lua'] = '--',
+	['toml'] = "#",
+	['python'] = "#",
+	['rust'] = "//",
+	['zig'] = "//",
+	['go'] = "//",
+	['java'] = "//",
+	['c'] = "//",
+	['assembly'] = ";",
+	[''] = "",
+}
+
 -- utils
 vim.keymap.set("n", "<leader>n", vim.cmd.E)
 vim.keymap.set({ "n", "v", "i", "c", "s" }, "<C-s>", "<Esc><Cmd>noh<CR><Cmd>w<CR>") -- save file and exit modes
 vim.keymap.set("n", "<leader>yy", '"+yy')                                           -- copy line to clippboard
 vim.keymap.set("v", "<leader>y", '"+y')                                             -- coppy selected text to clippboard
--- vim.keymap.set("n", "<leader>p", '"+p')                                             -- paste copied text from clippboard after
--- vim.keymap.set("n", "<leader>P", '"+P')                                             -- paste copied text from clippboard before
 vim.keymap.set("n", "<leader>x", "<Cmd>bd<CR>")                                     -- close current buffer
 vim.keymap.set("n", "<C-a>", "ggVG")                                                -- select all
+vim.keymap.set('v', '<leader>;', '<C-v>_I' .. languge_comments[current_languge] .. '<Esc><Cmd>w<CR>')
+vim.keymap.set('v', '<leader>:', '<C-v>:s/' .. languge_comments[current_languge] .. '/<CR>')
 
 -- telescope
 local telescope = require('telescope.builtin')
 vim.keymap.set('n', '<leader>ff', telescope.find_files, {})
-vim.keymap.set('n', '<leader>gl', telescope.live_grep, {}) -- find text across all the files in a workspace
+vim.keymap.set('n', '<leader>gl', telescope.live_grep, {})                 -- find text across all the files in a workspace
 vim.keymap.set('n', '<leader>gs', telescope.current_buffer_fuzzy_find, {}) -- find text in the current file/buffer
-vim.keymap.set('n', '<leader><Tab>', telescope.buffers, {}) -- search buffers
+vim.keymap.set('n', '<leader><Tab>', telescope.buffers, {})                -- search buffers
 vim.keymap.set('n', 'gr', '<cmd>Telescope lsp_references<cr>', { buffer = true })
 
 -- undotree
@@ -47,8 +61,7 @@ vim.keymap.set("n", "N", "Nzzzv")
 vim.keymap.set("n", "<leader>tt", vim.cmd.terminal)
 
 -- moving in insert mode
-vim.keymap.set("i", "<C-j>", '<Down>') -- jump to lower window
-vim.keymap.set("i", "<C-k>", '<Up>') -- jump to upper window
+vim.keymap.set("i", "<C-j>", '<Down>')  -- jump to lower window
+vim.keymap.set("i", "<C-k>", '<Up>')    -- jump to upper window
 vim.keymap.set("i", "<C-l>", '<Right>') -- jump to righter window
-vim.keymap.set("i", "<C-h>", '<Left>') -- jump to lefter window
-
+vim.keymap.set("i", "<C-h>", '<Left>')  -- jump to lefter window
