@@ -42,5 +42,7 @@ vim.opt.isfname:append("@-@")
 vim.opt.updatetime = 50
 
 vim.opt.colorcolumn = "80"
+vim.o.cursorline = false
+vim.o.culopt = "line"
 
 vim.opt.shell = 'nu' -- sets the terminal to nu

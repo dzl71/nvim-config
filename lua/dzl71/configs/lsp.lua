@@ -22,6 +22,7 @@ lsp.on_attach(function(client, bufnr)
 	-- see :help lsp-zero-keybindings
 	-- to learn the available actions
 	-- lsp.default_keymaps({ buffer = bufnr })
+
 	local opts = { buffer = bufnr } --, remap = false }
 
 	vim.keymap.set("n", "gd", function() vim.lsp.buf.definition() end, opts)

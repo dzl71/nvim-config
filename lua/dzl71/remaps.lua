@@ -1,28 +1,26 @@
 vim.g.mapleader = ' '
 
-local current_languge = vim.bo.filetype
-local languge_comments = {
-	['lua'] = '--',
-	['toml'] = "#",
-	['python'] = "#",
-	['rust'] = "//",
-	['zig'] = "//",
-	['go'] = "//",
-	['java'] = "//",
-	['c'] = "//",
-	['assembly'] = ";",
-	[''] = "",
-}
+--local fileType = vim.bo.filetype
+--local commentType = {
+--	[""] = "",
+--	["zig"] = "//",
+--	["python"] = "#",
+--	["java"] = "//",
+--	["c"] = "//",
+--	["rust"] = "//",
+--	["lua"] = "--",
+--	["go"] = "//",
+--}
 
 -- utils
+--vim.keymap.set('v', '<leader>;', '<C-v>_I' .. commentType[fileType] .. '<Esc>:w<CR>')      -- comment line
+--vim.keymap.set('v', '<leader>/', '<C-v>:s/' .. commentType[fileType] .. '/<CR><Cmd>w<CR>') -- uncomment line
 vim.keymap.set("n", "<leader>n", vim.cmd.E)
-vim.keymap.set({ "n", "v", "i", "c", "s" }, "<C-s>", "<Esc><Cmd>noh<CR><Cmd>w<CR>") -- save file and exit modes
-vim.keymap.set("n", "<leader>yy", '"+yy')                                           -- copy line to clippboard
-vim.keymap.set("v", "<leader>y", '"+y')                                             -- coppy selected text to clippboard
-vim.keymap.set("n", "<leader>x", "<Cmd>bd<CR>")                                     -- close current buffer
-vim.keymap.set("n", "<C-a>", "ggVG")                                                -- select all
-vim.keymap.set('v', '<leader>;', '<C-v>_I' .. languge_comments[current_languge] .. '<Esc><Cmd>w<CR>')
-vim.keymap.set('v', '<leader>:', '<C-v>:s/' .. languge_comments[current_languge] .. '/<CR>')
+vim.keymap.set({ "n", "v", "i", "c", "s", }, "<C-s>", "<Esc><Cmd>noh<CR><Cmd>w<CR>")        -- save file and exit modes
+vim.keymap.set("n", "<leader>yy", '"+yy')                                                  -- copy line to clippboard
+vim.keymap.set("v", "<leader>y", '"+y')                                                    -- coppy selected text to clippboard
+vim.keymap.set("n", "<leader>x", "<Cmd>bd<CR>")                                            -- close current buffer
+vim.keymap.set("n", "<C-a>", "ggVG")                                                       -- select all
 
 -- telescope
 local telescope = require('telescope.builtin')
