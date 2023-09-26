@@ -19,7 +19,7 @@ vim.keymap.set("n", "<leader>n", vim.cmd.E)
 vim.keymap.set({ "n", "v", "i", "c", "s", }, "<C-s>", "<Esc><Cmd>noh<CR><Cmd>w<CR>")        -- save file and exit modes
 vim.keymap.set("n", "<leader>yy", '"+yy')                                                  -- copy line to clippboard
 vim.keymap.set("v", "<leader>y", '"+y')                                                    -- coppy selected text to clippboard
-vim.keymap.set("n", "<leader>x", "<Cmd>bd<CR>")                                            -- close current buffer
+vim.keymap.set("n", "<leader>x", "<Cmd>bd!<CR>")                                            -- close current buffer
 vim.keymap.set("n", "<C-a>", "ggVG")                                                       -- select all
 
 -- telescope

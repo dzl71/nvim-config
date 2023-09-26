@@ -6,6 +6,12 @@ return {
 					overrideCommand = {
 						"cargo", "clippy", "--message-format=json"
 					}
+				},
+				inlayHints = {
+					lifetimeElisionHints = {
+						enable = "always", -- skip_trivial
+						useParameterNames = true,
+					}
 				}
 			}
 		}

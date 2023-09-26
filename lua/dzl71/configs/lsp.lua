@@ -48,9 +48,10 @@ lsp.on_attach(function(client, bufnr)
 	end, opts)
 end)
 
-
 lsp.setup()
 
 lsp.skip_server_setup({ 'rust_analyzer' })
+
+require 'lspconfig'.asm_lsp.setup {}
 
 vim.g.zig_fmt_autosave = 0
