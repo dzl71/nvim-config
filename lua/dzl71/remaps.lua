@@ -16,11 +16,13 @@ vim.g.mapleader = ' '
 --vim.keymap.set('v', '<leader>;', '<C-v>_I' .. commentType[fileType] .. '<Esc>:w<CR>')      -- comment line
 --vim.keymap.set('v', '<leader>/', '<C-v>:s/' .. commentType[fileType] .. '/<CR><Cmd>w<CR>') -- uncomment line
 vim.keymap.set("n", "<leader>n", vim.cmd.E)
-vim.keymap.set({ "n", "v", "i", "c", "s", }, "<C-s>", "<Esc><Cmd>noh<CR><Cmd>w<CR>")        -- save file and exit modes
-vim.keymap.set("n", "<leader>yy", '"+yy')                                                  -- copy line to clippboard
-vim.keymap.set("v", "<leader>y", '"+y')                                                    -- coppy selected text to clippboard
-vim.keymap.set("n", "<leader>x", "<Cmd>bd!<CR>")                                            -- close current buffer
-vim.keymap.set("n", "<C-a>", "ggVG")                                                       -- select all
+vim.keymap.set({ "n", "v", "i", "c", "s", }, "<C-s>", "<Esc><Cmd>noh<CR><Cmd>w<CR>") -- save file and exit modes
+vim.keymap.set("n", "<leader>yy", '"+yy')                                            -- copy line to clippboard
+vim.keymap.set("v", "<leader>y", '"+y')                                              -- coppy selected text to clippboard
+vim.keymap.set("n", "<leader>p", '"+p')                                              -- paste a from clippboard
+vim.keymap.set("n", "<leader>p", '"+P')                                              -- paste before cursor from clippboard
+vim.keymap.set("n", "<leader>x", "<Cmd>bd!<CR>")                                     -- close current buffer
+vim.keymap.set("n", "<C-a>", "ggVG")                                                 -- select all
 
 -- telescope
 local telescope = require('telescope.builtin')
