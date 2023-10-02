@@ -21,6 +21,7 @@ vim.keymap.set("n", "<leader>yy", '"+yy')                                       
 vim.keymap.set("v", "<leader>y", '"+y')                                              -- coppy selected text to clippboard
 vim.keymap.set("n", "<leader>p", '"+p')                                              -- paste a from clippboard
 vim.keymap.set("n", "<leader>p", '"+P')                                              -- paste before cursor from clippboard
+vim.keymap.set("x", "<leader>p", [["_dP]])                                           -- save the current item in the buffer after change
 vim.keymap.set("n", "<leader>x", "<Cmd>bd!<CR>")                                     -- close current buffer
 vim.keymap.set("n", "<C-a>", "ggVG")                                                 -- select all
 

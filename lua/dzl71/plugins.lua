@@ -82,6 +82,18 @@ return {
 		config = function()
 			require("neorg").setup {
 				-- configuration here
+				load = {
+					["core.defaults"] = {},
+					["core.dirman"] = {
+						config = {
+							workspaces = {
+								--work = "~/notes/work",
+								--home = "~/notes/home",
+								home = "~/notes",
+							}
+						}
+					}
+				}
 			}
 		end,
 	},
