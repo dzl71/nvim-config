@@ -76,25 +76,4 @@ return {
 			require("dzl71.configs.indentation")
 		end
 	},
-	{
-		"nvim-neorg/neorg",
-		run = ":Neorg sync-parsers", -- This is the important bit!
-		config = function()
-			require("neorg").setup {
-				-- configuration here
-				load = {
-					["core.defaults"] = {},
-					["core.dirman"] = {
-						config = {
-							workspaces = {
-								--work = "~/notes/work",
-								--home = "~/notes/home",
-								home = "~/notes",
-							}
-						}
-					}
-				}
-			}
-		end,
-	},
 }
