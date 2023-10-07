@@ -72,12 +72,13 @@ return {
 	},
 	{
 		"lukas-reineke/indent-blankline.nvim",
+		main = "ibl",
+		opts = {},
 		config = function()
 			require("dzl71.configs.indentation")
 		end
 	},
 	{
-
 		"nvim-neorg/neorg",
 		run = ":Neorg sync-parsers", -- This is the important bit!
 		config = function()
@@ -85,5 +86,5 @@ return {
 				-- configuration here
 			}
 		end,
-	}
+	},
 }
