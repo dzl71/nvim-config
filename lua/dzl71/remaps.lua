@@ -28,7 +28,9 @@ vim.keymap.set("n", "<C-a>", "ggVG")                                            
 -- telescope
 local telescope = require('telescope.builtin')
 vim.keymap.set('n', '<leader>ff', function()
-	telescope.find_files({ hidden = true })
+	telescope.find_files({
+		-- hidden = true
+	})
 end, {})
 vim.keymap.set('n', '<leader>gl', telescope.live_grep, {})                 -- find text across all the files in a workspace
 vim.keymap.set('n', '<leader>gs', telescope.current_buffer_fuzzy_find, {}) -- find text in the current file/buffer
