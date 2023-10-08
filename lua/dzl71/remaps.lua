@@ -70,3 +70,4 @@ vim.keymap.set("i", "<C-j>", '<Down>')  -- jump to lower window
 vim.keymap.set("i", "<C-k>", '<Up>')    -- jump to upper window
 vim.keymap.set("i", "<C-l>", '<Right>') -- jump to righter window
 vim.keymap.set("i", "<C-h>", '<Left>')  -- jump to lefter window
+

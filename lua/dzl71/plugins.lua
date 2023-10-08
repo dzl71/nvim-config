@@ -83,6 +83,7 @@ return {
 		run = ":Neorg sync-parsers", -- This is the important bit!
 		config = function()
 			require("neorg").setup(
+				require("dzl71.configs.neorg")
 			)
 		end,
 	},
