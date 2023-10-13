@@ -57,6 +57,7 @@ vim.keymap.set("v", "K", ":m .-2<CR>gv=gv")
 -- keeps the cursor at the middle of the screen when jumping up and down
 vim.keymap.set("n", "<C-d>", "<C-d>zz")
 vim.keymap.set("n", "<C-u>", "<C-u>zz")
+vim.keymap.set("n", "G", "Gzz")
 
 -- keeps the cursor in the middle while searching tesrms through "/"
 vim.keymap.set("n", "n", "nzzzv")
