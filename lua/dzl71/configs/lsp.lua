@@ -8,6 +8,7 @@ lsp.ensure_installed({
 	'zls',
 	'clangd',
 	'jdtls',
+	'pyright'
 })
 
 local cmp = require('cmp')
@@ -23,7 +24,7 @@ lsp.on_attach(function(client, bufnr)
 	-- to learn the available actions
 	-- lsp.default_keymaps({ buffer = bufnr })
 
-	local opts = { buffer = bufnr } --, remap = false }
+	local opts = { buffer = bufnr }
 
 	vim.keymap.set("n", "gd", function() vim.lsp.buf.definition() end, opts)
 	vim.keymap.set("n", "gr", function() vim.lsp.buf.references() end, opts)
@@ -44,7 +45,7 @@ lsp.on_attach(function(client, bufnr)
 				async = false,
 			},
 		})
-		vim.cmd("w")
+		vim.cmd('w')
 	end, opts)
 end)
 
@@ -52,6 +53,5 @@ lsp.setup()
 
 lsp.skip_server_setup({ 'rust_analyzer' })
 
-require 'lspconfig'.asm_lsp.setup {}
-
 vim.g.zig_fmt_autosave = 0
+-- vim.g.syntastic_python_checkers = { 'mypy' }
