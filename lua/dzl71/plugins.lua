@@ -87,4 +87,10 @@ return {
 			)
 		end,
 	},
+	{
+		 'https://github.com/nvim-lualine/lualine.nvim',
+		 config = function ()
+			 require("dzl71.configs.lualine")
+		 end
+	},
 }
