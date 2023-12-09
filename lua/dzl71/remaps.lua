@@ -1,28 +1,15 @@
 vim.g.mapleader = ' '
 
---local fileType = vim.bo.filetype
---local commentType = {
---	[""] = "",
---	["zig"] = "//",
---	["python"] = "#",
---	["java"] = "//",
---	["c"] = "//",
---	["rust"] = "//",
---	["lua"] = "--",
---	["go"] = "//",
---}
-
 -- utils
---vim.keymap.set('v', '<leader>;', '<C-v>_I' .. commentType[fileType] .. '<Esc>:w<CR>')      -- comment line
---vim.keymap.set('v', '<leader>/', '<C-v>:s/' .. commentType[fileType] .. '/<CR><Cmd>w<CR>') -- uncomment line
 vim.keymap.set("n", "<leader>n", vim.cmd.E)
-vim.keymap.set({ "n", "v", "i", "c", "s"}, "<C-s>", "<Esc><Cmd>noh<CR><Cmd>w<CR>") -- save file and exit modes
-vim.keymap.set("n", "<leader>yy", '"+yy')                                            -- copy line to clippboard
-vim.keymap.set("v", "<leader>y", '"+y')                                              -- coppy selected text to clippboard
-vim.keymap.set("n", "<leader>p", '"+p')                                              -- paste a from clippboard
-vim.keymap.set("n", "<leader>P", '"+P')                                              -- paste before cursor from clippboard
-vim.keymap.set("x", "<leader>p", [["_dP]])                                           -- save the current item in the buffer after change
-vim.keymap.set("n", "<leader>x", "<Cmd>bd!<CR>")                                     -- close current buffer
+vim.keymap.set({ "n", "v", "i", "c", "s" }, "<C-s>", "<Esc><Cmd>noh<CR><Cmd>w<CR>") -- save file and exit modes
+vim.keymap.set("n", "<leader>yy", '"+yy')                                          -- copy line to clippboard
+vim.keymap.set("v", "<leader>y", '"+y')                                            -- coppy selected text to clippboard
+vim.keymap.set("n", "<leader>p", '"+p')                                            -- paste a from clippboard
+vim.keymap.set("n", "<leader>P", '"+P')                                            -- paste before cursor from clippboard
+vim.keymap.set("v", "<leader>p", [["_dP]])                                         -- save the current item in the buffer after change
+vim.keymap.set("n", "<leader>x", "<Cmd>bd!<CR>")                                   -- close current buffer
+
 
 -- telescope
 local telescope = require('telescope.builtin')
@@ -70,4 +57,3 @@ vim.keymap.set("i", "<C-j>", '<Down>')  -- jump to lower window
 vim.keymap.set("i", "<C-k>", '<Up>')    -- jump to upper window
 vim.keymap.set("i", "<C-l>", '<Right>') -- jump to righter window
 vim.keymap.set("i", "<C-h>", '<Left>')  -- jump to lefter window
-
