@@ -23,7 +23,6 @@ vim.keymap.set("n", "<leader>p", '"+p')                                         
 vim.keymap.set("n", "<leader>P", '"+P')                                              -- paste before cursor from clippboard
 vim.keymap.set("x", "<leader>p", [["_dP]])                                           -- save the current item in the buffer after change
 vim.keymap.set("n", "<leader>x", "<Cmd>bd!<CR>")                                     -- close current buffer
-vim.keymap.set("n", "<C-a>", "ggVG")                                                 -- select all
 
 -- telescope
 local telescope = require('telescope.builtin')
