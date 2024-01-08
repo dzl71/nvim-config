@@ -30,12 +30,12 @@ return {
 			require('nvim-treesitter.configs').setup(opts)
 		end
 	},
-	{
-		'nvim-treesitter/playground'
-	},
-	{
-		'tpope/vim-fugitive'
-	},
+	-- {
+	-- 	'nvim-treesitter/playground'
+	-- },
+	-- {
+	-- 	'tpope/vim-fugitive'
+	-- },
 	{
 		'simrat39/rust-tools.nvim',
 		ft = "rust",
@@ -77,20 +77,5 @@ return {
 		config = function()
 			require("dzl71.configs.indentation")
 		end
-	},
-	{
-		"nvim-neorg/neorg",
-		run = ":Neorg sync-parsers", -- This is the important bit!
-		config = function()
-			require("neorg").setup(
-				require("dzl71.configs.neorg")
-			)
-		end,
-	},
-	{
-		 'https://github.com/nvim-lualine/lualine.nvim',
-		 config = function ()
-			 require("dzl71.configs.lualine")
-		 end
 	},
 }

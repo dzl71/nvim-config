@@ -2,7 +2,8 @@ vim.g.mapleader = ' '
 
 -- utils
 vim.keymap.set("n", "<leader>n", vim.cmd.E)
-vim.keymap.set({ "n", "v", "i", "c", "s" }, "<C-s>", "<Esc><Cmd>noh<CR><Cmd>w<CR>") -- save file and exit modes
+-- vim.keymap.set({ "n", "v", "i", "c", "s" }, "<C-s>", "<Esc><Cmd>noh<CR><Cmd>w<CR>") -- save file and exit modes
+vim.keymap.set({'n', 'v', 'i', 'c', 's'}, "<Esc>", "<Esc><Cmd>noh<CR>")
 vim.keymap.set("n", "<leader>yy", '"+yy')                                          -- copy line to clippboard
 vim.keymap.set("v", "<leader>y", '"+y')                                            -- coppy selected text to clippboard
 vim.keymap.set("n", "<leader>p", '"+p')                                            -- paste a from clippboard
@@ -23,9 +24,7 @@ vim.keymap.set('n', '<leader>gs', telescope.current_buffer_fuzzy_find, {}) -- fi
 vim.keymap.set('n', '<leader><Tab>', telescope.buffers, {})                -- search buffers
 vim.keymap.set('n', 'gr', '<cmd>Telescope lsp_references<cr>', { buffer = true })
 
--- undotree
---vim.keymap.set('n', '<leader>u', require('undotree').toggle, { noremap = true, silent = true })
-vim.keymap.set('n', '<leader>u', '<cmd>UndotreeToggle<cr>', {})
+-- undotree vim.keymap.set('n', '<leader>u', require('undotree').toggle, { noremap = true, silent = true }) vim.keymap.set('n', '<leader>u', '<cmd>UndotreeToggle<cr>', {})
 
 -- vim-fugitive
 vim.keymap.set("n", "<leader>gi", vim.cmd.Git)
