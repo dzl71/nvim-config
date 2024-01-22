@@ -12,7 +12,7 @@ return {
 			'nvim-lua/plenary.nvim',
 		},
 		config = function()
-			require("telescope").setup(require"configs.telescope")
+			require("telescope").setup()
 		end
 	},
 	{
@@ -35,9 +35,6 @@ return {
 	-- },
 	{
 		'tpope/vim-fugitive',
-		config = function ()
-		require"vim.fugitive".setup("configs.fugitive")	
-		end
 	},
 	{
 		'simrat39/rust-tools.nvim',
