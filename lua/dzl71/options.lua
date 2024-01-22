@@ -45,4 +45,4 @@ vim.opt.colorcolumn = "80"
 vim.o.cursorline = false
 vim.o.culopt = "line"
 
-vim.opt.shell = 'bash' -- sets the terminal to nu
+vim.opt.shell = '/usr/bin/bash'

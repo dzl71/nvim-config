@@ -12,7 +12,7 @@ return {
 			'nvim-lua/plenary.nvim',
 		},
 		config = function()
-			require("telescope").setup()
+			require("telescope").setup(require"configs.telescope")
 		end
 	},
 	{
@@ -33,9 +33,12 @@ return {
 	-- {
 	-- 	'nvim-treesitter/playground'
 	-- },
-	-- {
-	-- 	'tpope/vim-fugitive'
-	-- },
+	{
+		'tpope/vim-fugitive',
+		config = function ()
+		require"vim.fugitive".setup("configs.fugitive")	
+		end
+	},
 	{
 		'simrat39/rust-tools.nvim',
 		ft = "rust",
