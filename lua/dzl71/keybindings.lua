@@ -2,26 +2,23 @@ vim.g.mapleader = ' '
 
 -- utils
 vim.keymap.set("n", "<leader>n", vim.cmd.E)
--- vim.keymap.set({ "n", "v", "i", "c", "s" }, "<C-s>", "<Esc><Cmd>noh<CR><Cmd>w<CR>") -- save file and exit modes
-vim.keymap.set({'n', 'v', 'i', 'c', 's'}, "<Esc>", "<Esc><Cmd>noh<CR>")
-vim.keymap.set("n", "<leader>yy", '"+yy')                                          -- copy line to clippboard
-vim.keymap.set("v", "<leader>y", '"+y')                                            -- coppy selected text to clippboard
-vim.keymap.set("n", "<leader>p", '"+p')                                            -- paste a from clippboard
-vim.keymap.set("n", "<leader>P", '"+P')                                            -- paste before cursor from clippboard
-vim.keymap.set("v", "<leader>p", [["_dP]])                                         -- save the current item in the buffer after change
-vim.keymap.set("n", "<leader>x", "<Cmd>bd!<CR>")                                   -- close current buffer
+vim.keymap.set({ "n", "v", "i", "c", "s" }, "<C-s>", "<Esc><Cmd>noh<CR><Cmd>w<CR>") -- save file and exit modes
+-- vim.keymap.set({'n', 'v', 'i', 'c', 's'}, "<Esc>", "<Esc><Cmd>noh<CR>")
+vim.keymap.set("n", "<leader>yy", '"+yy')                                           -- copy line to clippboard
+vim.keymap.set("v", "<leader>y", '"+y')                                             -- coppy selected text to clippboard
+vim.keymap.set("n", "<leader>p", '"+p')                                             -- paste a from clippboard
+vim.keymap.set("n", "<leader>P", '"+P')                                             -- paste before cursor from clippboard
+vim.keymap.set("v", "<leader>p", [["_dP]])                                          -- save the current item in the buffer after change
+vim.keymap.set("n", "<leader>x", "<Cmd>bd!<CR>")                                    -- close current buffer
 
 
 -- keybindings located at telescope config
-vim.keymap.set('n', '<leader>ff', function()
-	telescope.find_files({
-		hidden = true
-	})
-end, {})
+local telescope = require("telescope.builtin")
+vim.keymap.set('n', '<leader>ff', function() telescope.find_files({ hidden = true }) end, {})
 vim.keymap.set('n', '<leader>gl', telescope.live_grep, {})                 -- find text across all the files in a workspace
 vim.keymap.set('n', '<leader>gs', telescope.current_buffer_fuzzy_find, {}) -- find text in the current file/buffer
 vim.keymap.set('n', '<leader><Tab>', telescope.buffers, {})                -- search buffers
-vim.keymap.set('n', 'gr', '<cmd>Telescope lsp_references<cr>', { buffer = true })
+vim.keymap.set('n', 'gr', telescope.lsp_references, { buffer = true })
 
 -- keybindings located at undotree config
 vim.keymap.set('n', '<leader>u', '<cmd>UndotreeToggle<cr>', {})
@@ -65,4 +62,4 @@ vim.keymap.set("i", "<C-h>", '<Left>')  -- jump to lefter window
 
 -- builtin terminal keybinidngs
 vim.keymap.set("t", "<C-S>", "<C-\\><C-n>")
-
+vim.keymap.set("t", "<Esc>", "<C-\\><C-n>")
