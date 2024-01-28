@@ -12,7 +12,8 @@ return {
 			'nvim-lua/plenary.nvim',
 		},
 		config = function()
-			require("telescope").setup()
+			local opts = require"dzl71.configs.telescope"
+			require("telescope").setup(opts)
 		end
 	},
 	{
