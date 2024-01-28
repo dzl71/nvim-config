@@ -1,5 +1,3 @@
-vim.g.mapleader = ' '
-
 -- utils
 vim.keymap.set("n", "<leader>n", vim.cmd.E)
 vim.keymap.set({ "n", "v", "i", "c", "s" }, "<C-s>", "<Esc><Cmd>noh<CR><Cmd>w<CR>") -- save file and exit modes
@@ -12,18 +10,16 @@ vim.keymap.set("v", "<leader>p", [["_dP]])                                      
 vim.keymap.set("n", "<leader>x", "<Cmd>bd!<CR>")                                    -- close current buffer
 
 
--- keybindings located at telescope config
-local telescope = require("telescope.builtin")
-vim.keymap.set('n', '<leader>ff', function() telescope.find_files({ hidden = true }) end, {})
-vim.keymap.set('n', '<leader>gl', telescope.live_grep, {})                 -- find text across all the files in a workspace
-vim.keymap.set('n', '<leader>gs', telescope.current_buffer_fuzzy_find, {}) -- find text in the current file/buffer
-vim.keymap.set('n', '<leader><Tab>', telescope.buffers, {})                -- search buffers
-vim.keymap.set('n', 'gr', telescope.lsp_references, { buffer = true })
+-- ==================================================================
+-- ==                                                              ==
+-- ==     telescope keybindings located at configs.telescope       ==
+-- ==                                                              ==
+-- ==================================================================
 
--- keybindings located at undotree config
+-- toggle and untoggle undotree
 vim.keymap.set('n', '<leader>u', '<cmd>UndotreeToggle<cr>', {})
 
--- keybindings located at vim-fugitive config
+-- show vim fugitive
 vim.keymap.set("n", "<leader>gi", vim.cmd.Git)
 
 -- window jumping
@@ -33,10 +29,10 @@ vim.keymap.set("n", "<C-l>", '<C-w>l') -- jump to righter window
 vim.keymap.set("n", "<C-h>", '<C-w>h') -- jump to lefter window
 
 -- swap windows
-vim.keymap.set("n", "<C-S-j>", '<C-w>J') -- jump to lower window
-vim.keymap.set("n", "<C-S-k>", '<C-w>K') -- jump to upper window
-vim.keymap.set("n", "<C-S-l>", '<C-w>L') -- jump to righter window
-vim.keymap.set("n", "<C-S-h>", '<C-w>H') -- jump to lefter window
+vim.keymap.set("n", "<C-S-j>", '<C-w>J') -- swap with lower window
+vim.keymap.set("n", "<C-S-k>", '<C-w>K') -- swap with upper window
+vim.keymap.set("n", "<C-S-l>", '<C-w>L') -- swap with righter window
+vim.keymap.set("n", "<C-S-h>", '<C-w>H') -- swap with lefter window
 
 -- moving the line of the selected text up and down
 vim.keymap.set("v", "J", ":m .+<CR>gv=gv")
@@ -52,14 +48,10 @@ vim.keymap.set("n", "n", "nzzzv")
 vim.keymap.set("n", "N", "Nzzzv")
 
 -- open terminal in a new tab
-vim.keymap.set("n", "<leader>t", ":edit term://bash<Cr>")
+-- vim.keymap.set("n", "<leader>t", ":edit term://bash<Cr>")
 
 -- moving in insert mode
 vim.keymap.set("i", "<C-j>", '<Down>')  -- jump to lower window
 vim.keymap.set("i", "<C-k>", '<Up>')    -- jump to upper window
 vim.keymap.set("i", "<C-l>", '<Right>') -- jump to righter window
 vim.keymap.set("i", "<C-h>", '<Left>')  -- jump to lefter window
-
--- builtin terminal keybinidngs
-vim.keymap.set("t", "<C-S>", "<C-\\><C-n>")
-vim.keymap.set("t", "<Esc>", "<C-\\><C-n>")
