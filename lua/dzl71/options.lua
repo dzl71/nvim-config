@@ -42,7 +42,7 @@ vim.opt.isfname:append("@-@")
 vim.opt.updatetime = 50
 
 vim.opt.colorcolumn = "80"
-vim.o.cursorline = false
+vim.o.cursorline = true
 vim.o.culopt = "line"
 
 vim.opt.shell = '/usr/bin/bash'
