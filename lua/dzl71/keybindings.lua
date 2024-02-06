@@ -29,7 +29,7 @@ end
 ---@param action string|function
 ---@param opts table?
 ---@return table
-local function bind(modes, name, action, opts)
+local function bind(name, action, opts, modes)
 	return {
 		modes = modes,
 		name = name,
@@ -52,219 +52,255 @@ vim.keymap.del("n", '<C-l>')
 -- *                              *
 -- ********************************
 
+-- bind(
+--     "<binding name>",
+--     "<action>",
+--     "<extra options>",
+--     "<mode>"
+--  ),
+
 local bindings = {
 
 	-- utils
 
 	bind( -- save file and exit modes
-		"n",
 		"<leader>n",
-		vim.cmd.E
+		vim.cmd.E,
+		{},
+		"n"
 	),
 	bind(
-		{ "n", "v", "i", "c", "s" },
 		"<C-s>",
-		"<Esc><Cmd>noh<CR><Cmd>w<CR>"
+		"<Esc><Cmd>noh<CR><Cmd>w<CR>",
+		{},
+		{ "n", "v", "i", "c", "s" }
 	),
 	bind( -- copy line to clippboard
-		"n",
 		"<leader>yy",
-		'"+yy'
+		'"+yy',
+		{},
+		"n"
 	),
 	bind( -- coppy selected text to clippboard
-		"v",
 		"<leader>y",
-		'"+y'
+		'"+y',
+		{},
+		"v"
 	),
 	bind( -- paste a from clippboard
-		"n",
 		"<leader>p",
-		'"+p'
+		'"+p',
+		{},
+		"n"
 	),
 	bind( -- paste before cursor from clippboard
-		"n",
 		"<leader>P",
-		'"+P'
+		'"+P',
+		{},
+		"n"
 	),
 	bind( -- save the current item in the buffer after change
-		"v",
 		"<leader>p",
-		[["_dP]]
+		[["_dP]],
+		{},
+		"v"
 	),
 	bind( -- close current buffer
-		"n",
 		"<leader>x",
-		"<Cmd>bd!<CR>"
+		"<Cmd>bd!<CR>",
+		{},
+		"n"
 	),
 
 	-- telescope keybindings
 
-	bind(
-		'n',
+	bind( -- find files
 		'<leader>ff',
 		function() telescope.find_files({ hidden = true }) end,
-		{}
+		{},
+		'n'
 	),
 	bind( -- find text across all the files in a workspace
-		'n',
 		'<leader>gl',
 		telescope.live_grep,
-		{}
+		{},
+		'n'
 	),
 	bind( -- find text in the current file/buffer
-		'n',
 		'<leader>/',
 		telescope.current_buffer_fuzzy_find,
-		{}
+		{},
+		'n'
 	),
 	bind( -- search buffers
-		'n',
 		'<leader><Tab>',
 		telescope.buffers,
-		{}
+		{},
+		'n'
 	),
-	bind(
-		'n',
+	bind( -- go to references
 		'gr',
 		telescope.lsp_references,
-		{ buffer = true }
+		{ buffer = true },
+		'n'
 	),
 
 	-- toggle and untoggle undotree
 
 	bind(
-		'n',
 		'<leader>u',
 		'<cmd>UndotreeToggle<cr>',
-		{}
+		{},
+		'n'
 	),
 
 	-- show vim fugitive
 
 	bind(
-		"n",
 		"<leader>gi",
-		vim.cmd.Git
+		vim.cmd.Git,
+		{},
+		"n"
 	),
 
 	-- window jumping
 
 	bind( -- jump to lower window
-		"n",
 		"<C-j>",
-		'<C-w>j'
+		'<C-w>j',
+		{},
+		"n"
 	),
 	bind( -- jump to upper window
-		"n",
 		"<C-k>",
-		'<C-w>k'
+		'<C-w>k',
+		{},
+		"n"
 	),
 	bind( -- jump to righter window
-		"n",
 		"<C-l>",
-		'<C-w>l'
+		'<C-w>l',
+		{},
+		"n"
 	),
 	bind( -- jump to lefter window
-		"n",
 		"<C-h>",
-		'<C-w>h'
+		'<C-w>h',
+		{},
+		"n"
 	),
 
 	-- swap windows
 
 	bind( -- swap with lower window
-		"n",
 		"<C-S-j>",
-		'<C-w>J'
+		'<C-w>J',
+		{},
+		"n"
 	),
 	bind( -- swap with upper window
-		"n",
 		"<C-S-k>",
-		'<C-w>K'
+		'<C-w>K',
+		{},
+		"n"
 	),
 	bind( -- swap with righter window
-		"n",
 		"<C-S-l>",
-		'<C-w>L'
+		'<C-w>L',
+		{},
+		"n"
 	),
 	bind( -- swap with lefter window
-		"n",
 		"<C-S-h>",
-		'<C-w>H'
+		'<C-w>H',
+		{},
+		"n"
 	),
 
 	-- moving the line of the selected text up and down
 
 	bind(
-		"v",
 		"J",
-		":m .+<CR>gv=gv"
+		":m .+<CR>gv=gv",
+		{},
+		"v"
 	),
 	bind(
-		"v",
 		"K",
-		":m .-2<CR>gv=gv"
+		":m .-2<CR>gv=gv",
+		{},
+		"v"
 	),
 
 	-- keeps the cursor at the middle of the screen when jumping up and down
 
 	bind(
-		"n",
 		"<C-d>",
-		"<C-d>zz"
+		"<C-d>zz",
+		{},
+		"n"
 	),
 	bind(
-		"n",
 		"<C-u>",
-		"<C-u>zz"
+		"<C-u>zz",
+		{},
+		"n"
 	),
 	bind(
-		"n",
 		"G",
-		"Gzz"
+		"Gzz",
+		{},
+		"n"
 	),
 
 	-- keeps the cursor in the middle while searching terms through "/"
 
 	bind(
 		"n",
-		"n",
-		"nzzzv"
+		"nzzzv",
+		{},
+		"n"
 	),
 	bind(
-		"n",
 		"N",
-		"Nzzzv"
+		"Nzzzv",
+		{},
+		"n"
 	),
 
 	-- open terminal in a new tab
 	-- bind(
-	-- "n",
 	-- "<leader>t",
-	-- ":edit term://bash<Cr>"
+	-- ":edit term://bash<Cr>",
+	-- {},
+	-- "n"
 	-- )
 
 	-- moving in insert mode
 
 	bind( -- go down
-		"i",
 		"<C-j>",
-		'<Down>'
+		'<Down>',
+		{},
+		"i"
 	),
 	bind( -- go up
-		"i",
 		"<C-k>",
-		'<Up>'
+		'<Up>',
+		{},
+		"i"
 	),
 	bind( -- go right
-		"i",
 		"<C-l>",
-		'<Right>'
+		'<Right>',
+		{},
+		"i"
 	),
 	bind( -- go left
-		"i",
 		"<C-h>",
-		'<Left>'
+		'<Left>',
+		{},
+		"i"
 	),
 }
 
