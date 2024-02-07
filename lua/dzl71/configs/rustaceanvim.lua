@@ -1,6 +1,4 @@
-local rt = require("rust-tools")
-
-return {
+vim.g.rustaceanvim = {
 	server = {
 		settings = {
 			["rust-analyzer"] = {
@@ -24,14 +22,16 @@ return {
 				},
 			}
 		},
-		on_attach = function(_, bufnr)
-			vim.keymap.set("n", "K", rt.hover_actions.hover_actions, { buffer = bufnr })
-		end,
+		on_attach = function(a, b)
+			ih.on_attach(a, b)
+		end
 	},
 	tools = {
+		on_initialized = function()
+			ih.set_all()
+		end,
 		inlay_hints = {
-			auto = true,
-			parameter_hints_prefix = "parameters ",
+			auto = false,
 		},
-	},
+	}
 }
