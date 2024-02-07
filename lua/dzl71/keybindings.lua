@@ -63,18 +63,18 @@ local bindings = {
 
 	-- utils
 
-	bind( -- save file and exit modes
+	bind(
 		"<leader>n",
 		vim.cmd.E,
 		{},
 		"n"
 	),
-	bind(
-		"<C-s>",
-		"<Esc><Cmd>noh<CR><Cmd>w<CR>",
-		{},
-		{ "n", "v", "i", "c", "s" }
-	),
+	-- bind( -- save file and exit modes
+	-- 	"<C-s>",
+	-- 	"<Esc><Cmd>noh<CR><Cmd>w<CR>",
+	-- 	{},
+	-- 	{ "n", "v", "i", "c", "s" }
+	-- ),
 	bind( -- copy line to clippboard
 		"<leader>yy",
 		'"+yy',
