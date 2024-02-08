@@ -2,10 +2,11 @@ local telescope = require("telescope.builtin")
 
 -- ********************************
 -- *                              *
--- *   define utility funcitons   *
+-- *       define funcitons       *
 -- *                              *
 -- ********************************
 
+---check if a keybining was already set in the same mode?
 ---@return boolean
 local function not_exists(binding)
 	if type(binding.modes) == "string" then
@@ -24,6 +25,7 @@ local function not_exists(binding)
 	return true
 end
 
+---set the keybindings
 ---@param bindings table
 local function set_bindings(bindings)
 	for _, binding in ipairs(bindings) do
@@ -33,6 +35,7 @@ local function set_bindings(bindings)
 	end
 end
 
+---define the keybinding "struct"
 ---@param modes table|string
 ---@param name string
 ---@param action string|function
@@ -315,7 +318,7 @@ local bindings = {
 
 -- *****************************************
 -- *                                       *
--- *    check for duplicate keybindings    *
+-- *           set keybindings             *
 -- *                                       *
 -- *****************************************
 
