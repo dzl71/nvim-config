@@ -24,6 +24,15 @@ local function not_exists(binding)
 	return true
 end
 
+---@param bindings table
+local function set_bindings(bindings)
+	for _, binding in ipairs(bindings) do
+		if not_exists(binding) then
+			vim.keymap.set(binding.modes, binding.name, binding.action, binding.opts)
+		end
+	end
+end
+
 ---@param modes table|string
 ---@param name string
 ---@param action string|function
@@ -310,8 +319,4 @@ local bindings = {
 -- *                                       *
 -- *****************************************
 
-for _, binding in ipairs(bindings) do
-	if not_exists(binding) then
-		vim.keymap.set(binding.modes, binding.name, binding.action, binding.opts)
-	end
-end
+set_bindings(bindings)
