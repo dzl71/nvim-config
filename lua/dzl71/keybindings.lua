@@ -6,6 +6,21 @@ local telescope = require("telescope.builtin")
 -- *                              *
 -- ********************************
 
+---define the keybinding "struct"
+---@param modes table|string
+---@param name string
+---@param action string|function
+---@param opts table?
+---@return table
+local function bind(name, action, opts, modes)
+	return {
+		modes = modes,
+		name = name,
+		action = action,
+		opts = opts,
+	}
+end
+
 ---check if a keybining was already set in the same mode?
 ---@return boolean
 local function not_exists(binding)
@@ -33,21 +48,6 @@ local function set_bindings(bindings)
 			vim.keymap.set(binding.modes, binding.name, binding.action, binding.opts)
 		end
 	end
-end
-
----define the keybinding "struct"
----@param modes table|string
----@param name string
----@param action string|function
----@param opts table?
----@return table
-local function bind(name, action, opts, modes)
-	return {
-		modes = modes,
-		name = name,
-		action = action,
-		opts = opts,
-	}
 end
 
 -- ************************************************
