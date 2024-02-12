@@ -36,9 +36,9 @@ return {
 	-- {
 	-- 	'nvim-treesitter/playground'
 	-- },
-	{
-		'tpope/vim-fugitive',
-	},
+	-- {
+	-- 	'tpope/vim-fugitive',
+	-- },
 	{
 		'simrat39/rust-tools.nvim',
 		ft = "rust",
