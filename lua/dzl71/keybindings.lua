@@ -168,12 +168,12 @@ local bindings = {
 
 	-- show vim fugitive
 
-	bind(
-		"<leader>gi",
-		vim.cmd.Git,
-		{},
-		"n"
-	),
+	-- bind(
+	-- 	"<leader>gi",
+	-- 	vim.cmd.Git,
+	-- 	{},
+	-- 	"n"
+	-- ),
 
 	-- window jumping
 
