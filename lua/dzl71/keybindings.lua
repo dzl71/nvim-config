@@ -6,48 +6,32 @@ local telescope = require("telescope.builtin")
 -- *                              *
 -- ********************************
 
----define the keybinding "struct"
----@param modes table|string
----@param name string
----@param action string|function
----@param opts table?
----@return table
-local function bind(name, action, opts, modes)
-	return {
-		modes = modes,
-		name = name,
-		action = action,
-		opts = opts,
-	}
-end
-
----check if a keybining was already set in the same mode?
----@return boolean
-local function not_exists(binding)
-	if type(binding.modes) == "string" then
-		if vim.fn.maparg(binding.name, binding.modes) ~= '' then
-			print(string.format([[the "%s" binding in "%s" mode is duplicated]], binding.name, binding.modes))
-			return false
-		end
-	else
-		for _, mode in ipairs(binding.modes) do
-			if vim.fn.maparg(binding.name, mode) ~= '' then
-				print(string.format([[the "%s" binding in "%s" mode is duplicated]], binding.name, mode))
-				return false
-			end
-		end
-	end
-	return true
-end
 
 ---set the keybindings
 ---@param bindings table
 local function set_bindings(bindings)
-	for _, binding in ipairs(bindings) do
-		if not_exists(binding) then
-			vim.keymap.set(binding.modes, binding.name, binding.action, binding.opts)
+	for mode, mode_bindings in pairs(bindings) do
+		for _, binding in ipairs(mode_bindings) do
+			if vim.fn.maparg(binding.mapping, mode) ~= '' then
+				print(string.format([[the "%s" binding in "%s" mode is duplicated]], binding.mapping, mode))
+			else
+				vim.keymap.set(mode, binding.mapping, binding.action, binding.opts)
+			end
 		end
 	end
+end
+
+---define the keybinding "struct"
+---@param mapping string
+---@param action string|function
+---@param opts table?
+---@return table
+local function bind(mapping, action, opts)
+	return {
+		mapping = mapping,
+		action = action,
+		opts = opts,
+	}
 end
 
 -- ************************************************
@@ -68,251 +52,230 @@ vim.keymap.del("n", '<C-l>')
 --     "<binding name>",
 --     "<action>",
 --     "<extra options>",
---     "<mode>"
 --  ),
 
-local bindings = {
+local bindings = {}
 
+bindings['n'] = {
 	-- utils
-
-	bind(
-		"<leader>n",
-		vim.cmd.E,
-		{},
-		"n"
-	),
-	-- bind( -- save file and exit modes
-	-- 	"<C-s>",
-	-- 	"<Esc><Cmd>noh<CR><Cmd>w<CR>",
-	-- 	{},
-	-- 	{ "n", "v", "i", "c", "s" }
-	-- ),
-	bind( -- copy line to clippboard
-		"<leader>yy",
-		'"+yy',
-		{},
-		"n"
-	),
-	bind( -- coppy selected text to clippboard
-		"<leader>y",
-		'"+y',
-		{},
-		"v"
-	),
-	bind( -- paste a from clippboard
-		"<leader>p",
-		'"+p',
-		{},
-		"n"
-	),
-	bind( -- paste before cursor from clippboard
-		"<leader>P",
-		'"+P',
-		{},
-		"n"
-	),
-	bind( -- save the current item in the buffer after change
-		"<leader>p",
-		[["_dP]],
-		{},
-		"v"
-	),
-	bind( -- close current buffer
-		"<leader>x",
-		"<Cmd>bd!<CR>",
-		{},
-		"n"
-	),
-
-	-- telescope keybindings
-
-	bind( -- find files
-		'<leader>ff',
-		function() telescope.find_files({ hidden = true }) end,
-		{},
-		'n'
-	),
-	bind( -- find text across all the files in a workspace
-		'<leader>gl',
-		telescope.live_grep,
-		{},
-		'n'
-	),
-	bind( -- find text in the current file/buffer
-		'<leader>/',
-		telescope.current_buffer_fuzzy_find,
-		{},
-		'n'
-	),
-	bind( -- search buffers
-		'<leader><Tab>',
-		telescope.buffers,
-		{},
-		'n'
-	),
-	bind( -- go to references
-		'gr',
-		telescope.lsp_references,
-		{ buffer = true },
-		'n'
-	),
-
-	-- toggle and untoggle undotree
-
 	bind(
 		'<leader>u',
 		'<cmd>UndotreeToggle<cr>',
-		{},
-		'n'
+		{
+			desc = "toggle undo-tree"
+		}
 	),
-
-	-- show vim fugitive
-
-	-- bind(
-	-- 	"<leader>gi",
-	-- 	vim.cmd.Git,
-	-- 	{},
-	-- 	"n"
-	-- ),
-
-	-- window jumping
-
-	bind( -- jump to lower window
+	bind(
+		"<leader>n",
+		vim.cmd.E,
+		{}
+	),
+	bind(
+		"<leader>yy",
+		'"+yy',
+		{
+			desc = "copy line to clippboard"
+		}
+	),
+	bind(
+		"<leader>p",
+		'"+p',
+		{
+			desc = "paste a from clippboard"
+		}
+	),
+	bind(
+		"<leader>P",
+		'"+P',
+		{
+			desc = "paste before cursor from clippboard"
+		}
+	),
+	bind(
+		"<leader>x",
+		"<Cmd>bd!<CR>",
+		{
+			desc = "close current buffer"
+		}
+	),
+	-- telescope
+	bind(
+		'<leader>ff',
+		function() telescope.find_files({ hidden = true }) end,
+		{
+			desc = "find files"
+		}
+	),
+	bind(
+		'<leader>gl',
+		telescope.live_grep,
+		{
+			desc = "find text across all the files in a workspace"
+		}
+	),
+	bind(
+		'<leader>/',
+		telescope.current_buffer_fuzzy_find,
+		{
+			desc = "find text in the current file/buffer"
+		}
+	),
+	bind(
+		'<leader><Tab>',
+		telescope.buffers,
+		{
+			desc = "search buffers"
+		}
+	),
+	bind(
+		'gr',
+		telescope.lsp_references,
+		{
+			buffer = true,
+			desc = "go to references"
+		}
+	),
+	-- window navigations
+	bind(
 		"<C-j>",
 		'<C-w>j',
-		{},
-		"n"
+		{
+			desc = "jump to lower window"
+		}
 	),
-	bind( -- jump to upper window
+	bind(
 		"<C-k>",
 		'<C-w>k',
-		{},
-		"n"
+		{
+			desc = "jump to upper window"
+		}
 	),
-	bind( -- jump to righter window
+	bind(
 		"<C-l>",
 		'<C-w>l',
-		{},
-		"n"
+		{
+			desc = "jump to righter window"
+		}
 	),
-	bind( -- jump to lefter window
+	bind(
 		"<C-h>",
 		'<C-w>h',
-		{},
-		"n"
+		{
+			desc = "jump to lefter window"
+		}
 	),
-
-	-- swap windows
-
-	bind( -- swap with lower window
+	-- window focusing
+	bind(
 		"<C-S-j>",
 		'<C-w>J',
-		{},
-		"n"
+		{
+			desc = "swap with lower window"
+		}
 	),
-	bind( -- swap with upper window
+	bind(
 		"<C-S-k>",
 		'<C-w>K',
-		{},
-		"n"
+		{
+			desc = "swap with upper window"
+		}
 	),
-	bind( -- swap with righter window
+	bind(
 		"<C-S-l>",
 		'<C-w>L',
-		{},
-		"n"
+		{
+			desc = "swap with righter window"
+		}
 	),
-	bind( -- swap with lefter window
+	bind(
 		"<C-S-h>",
 		'<C-w>H',
-		{},
-		"n"
+		{
+			desc = "swap with lefter window"
+		}
 	),
-
-	-- moving the line of the selected text up and down
-
-	bind(
-		"J",
-		":m .+<CR>gv=gv",
-		{},
-		"v"
-	),
-	bind(
-		"K",
-		":m .-2<CR>gv=gv",
-		{},
-		"v"
-	),
-
-	-- keeps the cursor at the middle of the screen when jumping up and down
-
+	-- centered navigation
 	bind(
 		"<C-d>",
 		"<C-d>zz",
-		{},
-		"n"
+		{}
 	),
 	bind(
 		"<C-u>",
 		"<C-u>zz",
-		{},
-		"n"
+		{}
 	),
 	bind(
 		"G",
 		"Gzz",
-		{},
-		"n"
+		{}
 	),
-
-	-- keeps the cursor in the middle while searching terms through "/"
-
 	bind(
 		"n",
 		"nzzzv",
-		{},
-		"n"
+		{}
 	),
 	bind(
 		"N",
 		"Nzzzv",
-		{},
-		"n"
+		{}
 	),
+}
 
-	-- open terminal in a new tab
-	-- bind(
-	-- "<leader>t",
-	-- ":edit term://bash<Cr>",
-	-- {},
-	-- "n"
-	-- )
+bindings['v'] = {
+	bind(
+		"<leader>y",
+		'"+y',
+		{
+			desc = "coppy selected text to clippboard"
+		}
+	),
+	bind(
+		"<leader>p",
+		[["_dP]],
+		{
+			desc = "save the current item in the buffer after change"
+		}
+	),
+	bind(
+		"J",
+		":m .+<CR>gv=gv",
+		{}
+	),
+	bind(
+		"K",
+		":m .-2<CR>gv=gv",
+		{}
+	),
+}
 
-	-- moving in insert mode
-
-	bind( -- go down
+bindings['i'] = {
+	bind(
 		"<C-j>",
 		'<Down>',
-		{},
-		"i"
+		{
+			desc = "go down in insert mode"
+		}
 	),
-	bind( -- go up
+	bind(
 		"<C-k>",
 		'<Up>',
-		{},
-		"i"
+		{
+			desc = "go up in insert mode"
+		}
 	),
-	bind( -- go right
+	bind(
 		"<C-l>",
 		'<Right>',
-		{},
-		"i"
+		{
+			desc = "go right in insert mode"
+		}
 	),
-	bind( -- go left
+	bind(
 		"<C-h>",
 		'<Left>',
-		{},
-		"i"
+		{
+			desc = "go left in insert mode"
+		}
 	),
 }
 
