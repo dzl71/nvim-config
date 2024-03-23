@@ -8,7 +8,8 @@ lsp.ensure_installed({
 	'zls',
 	'clangd',
 	'jdtls',
-	'pyright'
+	--'pyright'
+	'pylsp'
 })
 
 local cmp = require('cmp')
