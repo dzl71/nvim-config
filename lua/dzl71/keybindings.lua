@@ -2,6 +2,13 @@ local telescope = require("telescope.builtin")
 
 -- utils
 vim.keymap.set('v',
+	"v",
+	"<S-v>",
+	{
+		desc = "go to line-visual mode"
+	}
+)
+vim.keymap.set('v',
 	"<leader>y",
 	'"+y',
 	{
