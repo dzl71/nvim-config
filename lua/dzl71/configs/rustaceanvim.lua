@@ -1,4 +1,6 @@
-vim.g.rustaceanvim = {
+local inlay_hints = require("inlay-hints")
+
+return {
 	server = {
 		settings = {
 			["rust-analyzer"] = {
@@ -10,28 +12,18 @@ vim.g.rustaceanvim = {
 						'clippy::needless_return',
 					}
 				},
-				inlayHints = {
-					lifetimeElisionHints = {
-						enable = "always", -- skip_trivial
-						useParameterNames = true,
-					},
-					closingBraceHints = {
-						enable = true,
-						minLines = 0,
-					}
-				},
-			}
+			},
 		},
-		on_attach = function(a, b)
-			ih.on_attach(a, b)
-		end
+		on_attach = function(client, bufnr)
+			inlay_hints.on_attach(client, bufnr)
+		end,
 	},
 	tools = {
 		on_initialized = function()
-			ih.set_all()
+			inlay_hints.set_all()
 		end,
 		inlay_hints = {
-			auto = false,
+			auto = false
 		},
-	}
+	},
 }
