@@ -1,4 +1,5 @@
 local lsp = require('lsp-zero')
+local lspconfig = require("lspconfig")
 
 lsp.preset("recommended")
 
@@ -9,7 +10,6 @@ lsp.ensure_installed({
 	'clangd',
 	'jdtls',
 	'pylsp',
-	'pyright',
 })
 
 local cmp = require('cmp')
@@ -98,6 +98,9 @@ lsp.on_attach(function(client, bufnr)
 end)
 
 lsp.skip_server_setup({ 'rust_analyzer' })
+
+local pylsp_config = require("dzl71.configs.lsp.pylsp")
+lspconfig.pylsp.setup(pylsp_config)
 
 lsp.setup()
 

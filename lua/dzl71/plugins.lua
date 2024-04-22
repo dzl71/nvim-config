@@ -45,7 +45,7 @@ return {
 		ft = { "rust" },
 		version = '^4',
 		config = function()
-			vim.g.rustaceanvim = require("dzl71.configs.rustaceanvim")
+			vim.g.rustaceanvim = require("dzl71.configs.lsp.rustaceanvim")
 			-- require('rust-tools').setup(
 			-- 	require('dzl71.configs.rust_tools')
 			-- )
@@ -73,7 +73,7 @@ return {
 			{ 'L3MON4D3/LuaSnip' },         -- Required
 		},
 		config = function()
-			require("dzl71.configs.lsp")
+			require("dzl71.configs.lsp.lsp-setup")
 		end
 	},
 	{
