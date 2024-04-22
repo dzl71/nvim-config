@@ -231,3 +231,11 @@ vim.keymap.set('i',
 		desc = "go left in insert mode",
 	}
 )
+
+vim.keymap.set('n',
+	"<leader>t",
+	'<cmd>term<cr>',
+	{
+		desc = "open builtin terminal",
+	}
+)
