@@ -18,7 +18,7 @@ return {
 		only_current_line = false,
 		-- separator between types and parameter hints. Note that type hints are
 		-- shown before parameter
-		labels_separator = " |#| ",
+		labels_separator = " |#|",
 		-- whether to align to the length of the longest line in the file
 		max_len_align = false,
 		-- padding from the left if max_len_align is true
