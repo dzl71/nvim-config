@@ -29,26 +29,15 @@ return {
 		build = ':TSUpdate',
 		config = function()
 			local opts = require("dzl71.configs.treesitter")
-			--require('nvim-treesitter.install').compilers = { 'zig' }
 			require('nvim-treesitter.configs').setup(opts)
 		end
 	},
-	-- {
-	-- 	'nvim-treesitter/playground'
-	-- },
-	-- {
-	-- 	'tpope/vim-fugitive',
-	-- },
 	{
-		--'simrat39/rust-tools.nvim',
 		'mrcjkb/rustaceanvim',
 		ft = { "rust" },
 		version = '^4',
 		config = function()
 			vim.g.rustaceanvim = require("dzl71.configs.lsp.rustaceanvim")
-			-- require('rust-tools').setup(
-			-- 	require('dzl71.configs.rust_tools')
-			-- )
 		end
 	},
 	{
@@ -85,10 +74,32 @@ return {
 		end
 	},
 	{
-		'simrat39/inlay-hints.nvim',
+		'lvimuser/lsp-inlayhints.nvim',
 		config = function()
-			local opts = require("dzl71.configs.inlay_hints")
-			require("inlay-hints").setup(opts)
+			local opts = require("dzl71.configs.inlayhints")
+			require("lsp-inlayhints").setup(opts)
 		end
 	},
+
+	-- #############################
+	-- #      plugin backup        #
+	-- #############################
+
+	-- {
+	-- 	'simrat39/inlay-hints.nvim',
+	-- 	config = function()
+	-- 		local opts = require("dzl71.configs.inlay_hints")
+	-- 		require("inlay-hints").setup(opts)
+	-- 	end
+	-- },
+
+	-- {
+	--'simrat39/rust-tools.nvim',
+	-- ft = {'rust'},
+	-- config = function()
+	-- opts = require('dzl71.configs.rust_tools')
+	-- require('rust-tools').setup(opts)
+	-- end
+	-- },
+
 }
