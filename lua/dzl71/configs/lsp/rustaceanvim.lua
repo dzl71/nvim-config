@@ -1,5 +1,3 @@
-local inlay_hints = require("inlay-hints")
-
 return {
 	server = {
 		settings = {
@@ -14,14 +12,8 @@ return {
 				},
 			},
 		},
-		on_attach = function(client, bufnr)
-			inlay_hints.on_attach(client, bufnr)
-		end,
 	},
 	tools = {
-		on_initialized = function()
-			inlay_hints.set_all()
-		end,
 		inlay_hints = {
 			auto = false
 		},
