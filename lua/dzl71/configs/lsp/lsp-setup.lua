@@ -99,9 +99,29 @@ end)
 
 lsp.skip_server_setup({ 'rust_analyzer' })
 
-local pylsp_config = require("dzl71.configs.lsp.pylsp")
-lspconfig.pylsp.setup(pylsp_config)
 
 lsp.setup()
 
 vim.g.zig_fmt_autosave = 0
+
+lspconfig.pylsp.setup(
+	require("dzl71.configs.lsp.pylsp")
+)
+
+lspconfig.lua_ls.setup(
+	require("dzl71.configs.lsp.lua_ls")
+)
+
+-- enable inlayhints wherever it's supported
+vim.api.nvim_create_augroup("LspAttach_inlayhints", {})
+vim.api.nvim_create_autocmd("LspAttach", {
+	group = "LspAttach_inlayhints",
+	callback = function(args)
+		if not (args.data and args.data.client_id) then
+			return
+		end
+		local bufnr = args.buf
+		local client = vim.lsp.get_client_by_id(args.data.client_id)
+		require("lsp-inlayhints").on_attach(client, bufnr)
+	end,
+})
