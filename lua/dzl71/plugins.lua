@@ -73,17 +73,17 @@ return {
 			require("dzl71.configs.indentation")
 		end
 	},
-	{
-		'lvimuser/lsp-inlayhints.nvim',
-		config = function()
-			local opts = require("dzl71.configs.inlayhints")
-			require("lsp-inlayhints").setup(opts)
-		end
-	},
-
 	-- #############################
 	-- #      plugin backup        #
 	-- #############################
+
+	-- {
+	-- 	'lvimuser/lsp-inlayhints.nvim',
+	-- 	config = function()
+	-- 		local opts = require("dzl71.configs.inlayhints")
+	-- 		require("lsp-inlayhints").setup(opts)
+	-- 	end
+	-- },
 
 	-- {
 	-- 	'simrat39/inlay-hints.nvim',
