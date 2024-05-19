@@ -4,9 +4,14 @@ return {
 			["rust-analyzer"] = {
 				check = {
 					overrideCommand = {
-						"cargo", "clippy", "--message-format=json", -- make the linter be clippy
+						-- make the linter be clippy
+						"cargo",
+						"clippy",
+						"--message-format=json",
+						-- pass aditional arguments
 						'--',
-						'-A',                     -- allow the following cases
+						'-A',
+						-- allow the following cases
 						'clippy::needless_return',
 					}
 				},
@@ -15,7 +20,7 @@ return {
 	},
 	tools = {
 		inlay_hints = {
-			auto = false
+			auto = true
 		},
 	},
 }
