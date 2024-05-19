@@ -31,7 +31,7 @@ vim.keymap.set('n',
 )
 vim.keymap.set('n',
 	"<leader>n",
-	vim.cmd.E,
+	vim.cmd.Ex,
 	{
 		desc = "explore directory of current file",
 	}
