@@ -1,4 +1,4 @@
-return {
+local opts = {
 	commentStyle = { italic = false },
 	overrides = function(colors)
 		local theme = colors.theme
@@ -14,4 +14,11 @@ return {
 			PmenuThumb = { bg = theme.ui.bg_p2 },
 		}
 	end,
+}
+return {
+	"rebelot/kanagawa.nvim",
+	config = function()
+		require("kanagawa").setup(opts)
+		vim.cmd("colorscheme kanagawa")
+	end
 }

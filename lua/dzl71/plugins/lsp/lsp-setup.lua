@@ -108,9 +108,9 @@ lsp.setup()
 vim.g.zig_fmt_autosave = 0
 
 lspconfig.pylsp.setup(
-	require("dzl71.configs.lsp.pylsp")
+	require("dzl71.plugins.lsp.pylsp")
 )
 
 lspconfig.lua_ls.setup(
-	require("dzl71.configs.lsp.lua_ls")
+	require("dzl71.plugins.lsp.lua_ls")
 )

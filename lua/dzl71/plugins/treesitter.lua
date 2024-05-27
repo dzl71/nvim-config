@@ -1,4 +1,4 @@
-return {
+local opts = {
 	-- A list of parser names, or "all" (the five listed parsers should always be installed)
 	ensure_installed = { "rust", "lua", "python", "vimdoc", "java", "c" },
 
@@ -21,4 +21,12 @@ return {
 
 	-- this should make indentations better
 	-- indent = { enable = true },
+}
+
+return {
+	'nvim-treesitter/nvim-treesitter',
+	build = ':TSUpdate',
+	config = function()
+		require('nvim-treesitter.configs').setup(opts)
+	end
 }

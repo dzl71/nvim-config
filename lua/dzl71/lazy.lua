@@ -9,8 +9,13 @@ if not vim.loop.fs_stat(lazypath) then
 		lazypath,
 	})
 end
+
+-- Add lazy to the `runtimepath`, this allows us to `require` it.
 vim.opt.rtp:prepend(lazypath)
 
-local plugins = require("dzl71.plugins")
-
-require("lazy").setup(plugins, opts)
+-- Set up lazy, and load my `lua/custom/plugins/` folder
+require("lazy").setup({ import = "dzl71/plugins" }, {
+  change_detection = {
+    notify = false,
+  },
+})

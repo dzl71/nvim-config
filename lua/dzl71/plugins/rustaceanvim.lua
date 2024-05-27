@@ -1,4 +1,4 @@
-return {
+local opts = {
 	server = {
 		settings = {
 			["rust-analyzer"] = {
@@ -23,4 +23,13 @@ return {
 			auto = true
 		},
 	},
+}
+
+return {
+	'mrcjkb/rustaceanvim',
+	ft = { "rust" },
+	version = '^4',
+	config = function()
+		vim.g.rustaceanvim = opts
+	end
 }
