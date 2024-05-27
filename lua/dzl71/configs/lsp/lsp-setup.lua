@@ -27,6 +27,8 @@ lsp.on_attach(function(client, bufnr)
 
 	local opts = { buffer = bufnr }
 	vim.lsp.inlay_hint.enable(true)
+	-- make the LspInlayHint color to comment color
+	vim.api.nvim_set_hl(0, 'LspInlayHint', { fg = '#727169' })
 
 	vim.keymap.set("n",
 		"gd",
