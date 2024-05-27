@@ -20,7 +20,7 @@ local opts = {
 	},
 	tools = {
 		inlay_hints = {
-			auto = true
+			auto = false
 		},
 	},
 }
