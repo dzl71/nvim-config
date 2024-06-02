@@ -9,7 +9,7 @@ lsp.ensure_installed({
 	'zls',
 	'clangd',
 	'jdtls',
-	'pylsp',
+	'pylsp', -- python
 })
 
 local cmp = require('cmp')
@@ -100,17 +100,20 @@ lsp.on_attach(function(client, bufnr)
 	)
 end)
 
-lsp.skip_server_setup({ 'rust_analyzer' })
-
+-- lsp.skip_server_setup({ 'rust_analyzer' })
 
 lsp.setup()
 
 vim.g.zig_fmt_autosave = 0
 
-lspconfig.pylsp.setup(
-	require("dzl71.plugins.lsp.pylsp")
-)
+-- lspconfig.pylsp.setup(
+-- 	require("dzl71.plugins.lsp.pylsp")
+-- )
 
 lspconfig.lua_ls.setup(
 	require("dzl71.plugins.lsp.lua_ls")
+)
+
+lspconfig.rust_analyzer.setup(
+	require("dzl71.plugins.lsp.rust_analyzer")
 )
