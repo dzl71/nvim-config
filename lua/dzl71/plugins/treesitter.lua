@@ -1,3 +1,13 @@
+local function configured(opts)
+	return {
+		'nvim-treesitter/nvim-treesitter',
+		build = ':TSUpdate',
+		config = function()
+			require('nvim-treesitter.configs').setup(opts)
+		end
+	}
+end
+
 local opts = {
 	-- A list of parser names, or "all" (the five listed parsers should always be installed)
 	ensure_installed = { "rust", "lua", "python", "vimdoc", "java", "c" },
@@ -23,10 +33,4 @@ local opts = {
 	-- indent = { enable = true },
 }
 
-return {
-	'nvim-treesitter/nvim-treesitter',
-	build = ':TSUpdate',
-	config = function()
-		require('nvim-treesitter.configs').setup(opts)
-	end
-}
+return configured(opts)

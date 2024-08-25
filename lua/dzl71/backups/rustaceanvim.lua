@@ -1,3 +1,14 @@
+local function configured_rustaceanvim(opts)
+	return {
+		'mrcjkb/rustaceanvim',
+		ft = { "rust" },
+		version = '^4',
+		config = function()
+			vim.g.rustaceanvim = opts
+		end
+	}
+end
+
 local opts = {
 	server = {
 		settings = {
@@ -25,11 +36,4 @@ local opts = {
 	},
 }
 
-return {
-	'mrcjkb/rustaceanvim',
-	ft = { "rust" },
-	version = '^4',
-	config = function()
-		vim.g.rustaceanvim = opts
-	end
-}
+return configured_rustaceanvim(opts)
