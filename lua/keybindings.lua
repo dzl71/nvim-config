@@ -1,5 +1,15 @@
 local telescope = require("telescope.builtin")
 
+--[[
+vim.keymap.set(<mode>,
+	<keybinding>,
+	<action>,
+	{
+		<options>
+		desc = <desription>
+	}
+--]]
+
 -- utils
 vim.keymap.set('v',
 	"v",
