@@ -13,7 +13,7 @@ local function configured_lsp_zero(opts)
 			{ 'L3MON4D3/LuaSnip' },         -- Required
 		},
 		config = function()
-			require("dzl71.plugins.lsp.lsp-setup")
+			require("plugins.lsp.lsp-setup")
 		end
 	}
 end
