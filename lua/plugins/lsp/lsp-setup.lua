@@ -107,13 +107,13 @@ lsp.setup()
 vim.g.zig_fmt_autosave = 0
 
 -- lspconfig.pylsp.setup(
--- 	require("dzl71.plugins.lsp.pylsp")
+-- 	require("plugins.lsp.pylsp")
 -- )
 
 lspconfig.lua_ls.setup(
-	require("dzl71.plugins.lsp.lua_ls")
+	require("plugins.lsp.lua_ls")
 )
 
 lspconfig.rust_analyzer.setup(
-	require("dzl71.plugins.lsp.rust_analyzer")
+	require("plugins.lsp.rust_analyzer")
 )

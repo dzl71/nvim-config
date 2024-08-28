@@ -1,2 +1,2 @@
-require("dzl71")
+require("settings")
 
