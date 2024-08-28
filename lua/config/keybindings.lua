@@ -4,6 +4,7 @@ local telescope = require("telescope.builtin")
 vim.keymap.set(<mode>,
 	<keybinding>,
 	<action>,
+	-- the following part is optional
 	{
 		<options>
 		desc = <desription>
