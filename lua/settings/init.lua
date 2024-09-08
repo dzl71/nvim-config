@@ -1,4 +1,4 @@
 vim.g.mapleader = ' '
-require("config.lazy")
-require("config.keybindings")
-require("config.options")
+require("settings.lazy")
+require("settings.keybindings")
+require("settings.options")
