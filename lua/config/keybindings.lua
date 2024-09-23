@@ -12,6 +12,13 @@ vim.keymap.set(<mode>,
 --]]
 
 -- utils
+vim.keymap.set('n',
+	'ZO',
+	'ZQ',
+	{
+		desc = 'quit without saving'
+	}
+)
 vim.keymap.set('v',
 	"v",
 	"<S-v>",
