@@ -30,7 +30,7 @@ lsp.on_attach(function(client, bufnr)
 	-- make the LspInlayHint color to comment color
 	vim.api.nvim_set_hl(0, 'LspInlayHint', { fg = '#727169' })
 
-	require("config.keybindings.lsp")(opts)
+	require("config.keybindings.plugins.lsp")(opts)
 
 end)
 
