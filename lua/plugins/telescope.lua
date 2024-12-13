@@ -1,5 +1,3 @@
-local keybindings = require("config.keybindings.plugins.telescope")
-
 local function configured(opts)
 	return {
 		'nvim-telescope/telescope.nvim',
@@ -7,7 +5,6 @@ local function configured(opts)
 		dependencies = {
 			'nvim-lua/plenary.nvim',
 		},
-		keys = keybindings.keys,
 		config = function()
 			require("telescope").setup(opts)
 		end,
@@ -17,8 +14,8 @@ end
 local opts = {
 	defaults = {
 		initial_mode = "normal",
-		mappings = keybindings.mappings
 	},
 }
 
+require("config.keybindings.plugins.telescope")
 return configured(opts)
