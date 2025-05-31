@@ -91,11 +91,20 @@ local function keybinds(bufnr)
 		'n',
 		'<leader>e',
 		function()
-			vim.lsp.buf.open_float()
+			vim.diagnostic.open_float()
 		end,
 		{ buffer = bufnr, desc = "show diagnostics", }
 	)
 	
+	vim.keymap.set(
+		'n',
+		'<C-k>',
+		function()
+			vim.lsp.buf.signature_help()
+		end,
+		{ buffer = bufnr, desc = "function signature help", }
+	)
+
 	-- default nvim mappings
 	-- K = hover (see docs)
 	-- gd = go to defenition
